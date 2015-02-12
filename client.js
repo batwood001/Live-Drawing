@@ -42,6 +42,10 @@
 	line.begin.mouseX = undefined;
 	line.begin.mouseY = undefined;
 
+	//**
+	// Web
+	//**
+
 	$('#canvas').mousedown(function(e){
 		line.drawing = true;
 	  	line.begin.mouseX = e.pageX - this.offsetLeft;
@@ -73,6 +77,47 @@
 
 	$('#canvas').mouseleave(function(e){
 	});
+
+	//**
+	// Mobile
+	//**
+
+	$('#canvas').on('touchstart', function(e){
+		e.preventDefault();
+		line.drawing = true;
+	  	line.begin.mouseX = e.originalEvent.targetTouches[0].pageX - this.offsetLeft;
+	  	line.begin.mouseY = e.originalEvent.targetTouches[0].pageY - this.offsetTop;
+	  	line.strokeStyle = curColor;
+
+	  	drawLine(line, true);
+	})
+
+	$('#canvas').on('touchmove', function(e){
+		if(line.drawing = true) {
+		e.preventDefault();
+		line.end.mouseX = e.originalEvent.targetTouches[0].pageX - this.offsetLeft;
+		line.end.mouseY = e.originalEvent.targetTouches[0].pageY - this.offsetTop;
+
+		drawLine(line, true)
+
+		line.begin.mouseX = line.end.mouseX;
+		line.begin.mouseY = line.end.mouseY;
+		line.end.mouseX = undefined;
+		line.end.mouseY = undefined;
+	  }
+	})
+
+	$('#canvas').on('touchend', function(e){
+		e.preventDefault();
+		line.drawing = true;
+	  	line.begin.mouseX = e.pageX - this.offsetLeft;
+	  	line.begin.mouseY = e.pageY - this.offsetTop;
+	  	line.strokeStyle = curColor;
+
+	  	drawLine(line, true);
+	})
+
+
 
 	function drawLine(line, myLine){
 		if(myLine === true) {

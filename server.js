@@ -4,7 +4,7 @@ var fs = require('fs');
 var url = require('url')
 
 
-app.listen(process.env.PORT || 8888);
+app.listen(process.env.PORT || 80);
 
 function handler (req, res) {
 
