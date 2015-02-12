@@ -48,7 +48,7 @@
 	  	line.begin.mouseY = e.pageY - this.offsetTop;
 	  	line.strokeStyle = curColor;
 
-	  	drawLine(line);
+	  	drawLine(line, true);
 
 	});
 
@@ -58,7 +58,7 @@
 			line.end.mouseX = e.pageX - this.offsetLeft;
 			line.end.mouseY = e.pageY - this.offsetTop;
 
-			drawLine(line)
+			drawLine(line, true)
 
 			line.begin.mouseX = line.end.mouseX;
 			line.begin.mouseY = line.end.mouseY;
@@ -74,8 +74,10 @@
 	$('#canvas').mouseleave(function(e){
 	});
 
-	function drawLine(line){
-		socket.emit('paint', line)
+	function drawLine(line, myLine){
+		if(myLine === true) {
+			socket.emit('paint', line)
+		}
 		context.beginPath();
 		context.moveTo(line.begin.mouseX, line.begin.mouseY)
 		context.lineTo(line.end.mouseX, line.end.mouseY);
@@ -83,8 +85,7 @@
 		context.stroke();
 	};
 
-
 	socket.on('paint', function (data) {
-		drawLine(data);
+		drawLine(data, false);
 	});
 })();

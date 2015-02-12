@@ -1,0 +1,9 @@
+{
+  "name": "canvas_project",
+  "description": "play with your kids damnit",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "socket.io": "*"
+  }
+}
