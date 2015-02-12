@@ -11,7 +11,7 @@
 
 	context = canvas.getContext("2d");
 
-	var socket = io('http://localhost');
+	var socket = io('https://obscure-waters-3274.herokuapp.com');
 
 	var colorPurple = "#cb3594";
 	var colorGreen = "#659b41";
