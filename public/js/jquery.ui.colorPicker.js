@@ -13,7 +13,7 @@ var __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = 
 
 $.widget('oal.colorPicker', {
   options: {
-    size: 120,
+    size: 200,
     format: 'hsla'
   },
   _create: function() {
