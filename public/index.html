@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/css/jquery.ui.colorPicker.css"/>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="/css/canvas-page.css"/>
+	</head>
+	<body>
+	    <div id="picker">
+	      <input type="text" id="colorpicker">
+	    </div>
+
+		<div id="canvasDiv">
+			<canvas id="canvas"></canvas>
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js" type="text/javascript"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js" type="text/javascript"></script>
+		<script src="/js/jquery.ui.colorPicker.js" type="text/javascript"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/js/drawing.js"></script>
+		<script type="text/javascript">
+
+			window.AppCanvas = {
+				penColor: "#000",
+			};
+
+		    $(document).ready(function(){
+		      $('#colorpicker').colorPicker({
+			        colorChange: function(e, ui) {
+			            AppCanvas.penColor = ui.color;
+			        }
+		    	});
+
+	        $('#colorpicker').colorPicker('setColor', 0, 0, 0, 0.9);
+
+	        $('em#formats a').click(function(){
+	            var format = $(this).attr('title').toLowerCase();
+	            $('#colorpicker').colorPicker('option', 'format', format);
+	      	})
+	      })
+
+		</script>
+	</body>
+</html>

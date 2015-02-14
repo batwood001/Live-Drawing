@@ -1,56 +1,40 @@
 (function () {
-	var canvasDiv = document.getElementById('canvasDiv');
-	canvas = document.createElement('canvas');
-	canvas.setAttribute('width', '1400'); // change all of this in CSS later
-	canvas.setAttribute('height', "800");
-	canvas.setAttribute('id', 'canvas');
-	canvasDiv.appendChild(canvas);
-	if(typeof G_vmlCanvasManager != 'undefined') {
-		canvas = G_vmlCanvasManager.initElement(canvas);
-	}
+
+	// var canvasDiv = document.getElementById('canvasDiv');
+	// window.canvas = document.createElement('canvas');
+	// canvas.setAttribute('width', '1400'); // change all of this in CSS later
+	// canvas.setAttribute('height', "800");
+	// canvas.setAttribute('id', 'canvas');
+	// canvasDiv.appendChild(canvas);
+	
+
+	canvas = document.getElementById('canvas')//$('#canvas')[0];
+	canvas.width = 1400;
+	canvas.height = 700;
+
+	// if(typeof G_vmlCanvasManager != 'undefined') {
+	// 	canvas = G_vmlCanvasManager.initElement(canvas);
+	// }
 
 	context = canvas.getContext("2d");
 
 	var socket = io('https://obscure-waters-3274.herokuapp.com');
 
-	var colorPurple = "#cb3594";
-	var colorGreen = "#659b41";
-	var colorYellow = "#ffcf33";
-	var colorBrown = "#986928";
-
-	var curColor = colorPurple;
-
-	$("#choosePurpleSimpleColors").click(function(){
-		curColor = colorPurple;
-	})
-
-	$("#chooseGreenSimpleColors").click(function(){
-		curColor = colorGreen
-	})
-
-	$("#chooseYellowSimpleColors").click(function(){
-		curColor = colorYellow
-	})
-
-	$("#chooseBrownSimpleColors").click(function(){
-		curColor = colorBrown
-	})
-
-	var line = {};
+	window.line = {};
 	line.begin = {};
 	line.end = {};
 	line.begin.mouseX = undefined;
 	line.begin.mouseY = undefined;
 
 	//**
-	// Web
+	// PC
 	//**
 
 	$('#canvas').mousedown(function(e){
 		line.drawing = true;
 	  	line.begin.mouseX = e.pageX - this.offsetLeft;
 	  	line.begin.mouseY = e.pageY - this.offsetTop;
-	  	line.strokeStyle = curColor;
+	  	line.strokeStyle = AppCanvas.penColor;
 
 	  	drawLine(line, true);
 
@@ -87,7 +71,7 @@
 		line.drawing = true;
 	  	line.begin.mouseX = e.originalEvent.targetTouches[0].pageX - this.offsetLeft;
 	  	line.begin.mouseY = e.originalEvent.targetTouches[0].pageY - this.offsetTop;
-	  	line.strokeStyle = curColor;
+	  	line.strokeStyle = AppCanvas.penColor;
 
 	  	drawLine(line, true);
 	})
@@ -112,7 +96,7 @@
 		line.drawing = true;
 	  	line.begin.mouseX = e.pageX - this.offsetLeft;
 	  	line.begin.mouseY = e.pageY - this.offsetTop;
-	  	line.strokeStyle = curColor;
+	  	line.strokeStyle = AppCanvas.penColor;
 
 	  	drawLine(line, true);
 	})
@@ -120,9 +104,11 @@
 
 
 	function drawLine(line, myLine){
+		console.log(line.end)
 		if(myLine === true) {
 			socket.emit('paint', line)
 		}
+		console.log(line.begin.mouseX, line.end.mouseX, context.strokeStyle)
 		context.beginPath();
 		context.moveTo(line.begin.mouseX, line.begin.mouseY)
 		context.lineTo(line.end.mouseX, line.end.mouseY);
