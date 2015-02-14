@@ -104,11 +104,9 @@
 
 
 	function drawLine(line, myLine){
-		console.log(line.end)
 		if(myLine === true) {
 			socket.emit('paint', line)
 		}
-		console.log(line.begin.mouseX, line.end.mouseX, context.strokeStyle)
 		context.beginPath();
 		context.moveTo(line.begin.mouseX, line.begin.mouseY)
 		context.lineTo(line.end.mouseX, line.end.mouseY);
