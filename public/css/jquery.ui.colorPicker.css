@@ -12,7 +12,7 @@ div.colorpicker div.circle {
   background-clip: padding-box;
 }
 div.colorpicker div.circle.alpha {
-  background-image: url("public/css/transparent.gif");
+  background-image: url("public/lib/transparent.gif");
   opacity: 0.0;
 }
 div.colorpicker div.circle.lightness {
@@ -53,9 +53,9 @@ div.colorpicker div.slider.lightness {
   background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,1));
 }
 div.colorpicker div.slider.alpha {
-  background: -webkit-linear-gradient(top, rgba(255,255,255,1.0), rgba(255,255,255,0.6)), url("public/css/transparent.gif") center;
-  background: -moz-linear-gradient(top, rgba(255,255,255,1.0), rgba(255,255,255,0.6)), url("public/css/transparent.gif") center;
-  background: linear-gradient(top, rgba(255,255,255,1.0), rgba(255,255,255,0.6)), url("public/css/transparent.gif") center;
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1.0), rgba(255,255,255,0.6)), url("public/lib/transparent.gif") center;
+  background: -moz-linear-gradient(top, rgba(255,255,255,1.0), rgba(255,255,255,0.6)), url("public/lib/transparent.gif") center;
+  background: linear-gradient(top, rgba(255,255,255,1.0), rgba(255,255,255,0.6)), url("public/lib/transparent.gif") center;
 }
 div.colorpicker input.colorInput {
   margin-top: 10px;
