@@ -1,24 +1,13 @@
 (function () {
-
-	// var canvasDiv = document.getElementById('canvasDiv');
-	// window.canvas = document.createElement('canvas');
-	// canvas.setAttribute('width', '1400'); // change all of this in CSS later
-	// canvas.setAttribute('height', "800");
-	// canvas.setAttribute('id', 'canvas');
-	// canvasDiv.appendChild(canvas);
 	
-
-	canvas = document.getElementById('canvas')//$('#canvas')[0];
+	canvas = document.getElementById('canvas');
 	canvas.width = 1400;
 	canvas.height = 700;
-
-	// if(typeof G_vmlCanvasManager != 'undefined') {
-	// 	canvas = G_vmlCanvasManager.initElement(canvas);
-	// }
 
 	context = canvas.getContext("2d");
 
 	var socket = io('https://obscure-waters-3274.herokuapp.com');
+	// var socket = io('localhost');
 
 	window.line = {};
 	line.begin = {};

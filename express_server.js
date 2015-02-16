@@ -14,6 +14,7 @@ app.use(express.static('public'));
 io.on('connection', function (socket) {
 	var address = socket.handshake.address;
 	console.log("New connection from " + address.address + ":" + address.port);
+	console.log("socket.client.conn.remoteAddress:", socket.client.conn.remoteAddress)
 
   	socket.on('paint', function (data) {
   		socket.broadcast.emit('paint', data)
