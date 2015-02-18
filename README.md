@@ -4,7 +4,7 @@ A live collaborative drawing app using node.js, express.js, JQuery, and socket.i
 
 If you are so inclined, please submit comments/suggestions as issues or e-mail me at batwood011@gmail.com. Feel free to fork this project and add features, too! If you do, here are a few notes to help you get started:
 
-You must have node.js (http://nodejs.org/) installed in your dev environment.
+You must have node.js, express.js, and socket.io installed in your dev environment.
 
 The most up-to-date server file is express_server.js which, unsurprisingly, uses express.js. To run the server on localhost, simply type 'node express_server.js' while in the project root directory. 
 
